@@ -13,5 +13,7 @@ namespace CinemaApp.Models
         public double Rating { get; set; }
         public string Genre { get; set; }
         public string ImageUrl { get; set; }
+
+        public string FullImageUrl => AppSettings.ApiUrl + ImageUrl;
     }
 }

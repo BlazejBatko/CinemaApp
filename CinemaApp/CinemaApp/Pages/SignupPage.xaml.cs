@@ -24,11 +24,18 @@ namespace CinemaApp.Pages
             if (response)
             {
                 await DisplayAlert("Hej", "Konto zostało stworzone pomyślnie", "Kontynuuj");
+                await Navigation.PushModalAsync(new LoginPage());
             }
             else
             {
                 await DisplayAlert(":(", "Niestety nie udało się utworzyć konta", "Anuluj");
             }
+        }
+
+        private async void LblLogin_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new LoginPage());
+
         }
     }
 }
