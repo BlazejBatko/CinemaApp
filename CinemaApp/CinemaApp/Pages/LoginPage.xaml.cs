@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,6 +26,8 @@ namespace CinemaApp.Pages
         private async void ImgLogin_Tapped(object sender, EventArgs e)
         {
           var response =   await ApiService.Login(EntEmail.Text, EntPassword.Text); //nawigujemy po poprawnym logowaniu na HomePage
+            Preferences.Set("email", EntEmail.Text);
+            Preferences.Set("password", EntPassword.Text);
           if(response)
             {
                 Application.Current.MainPage = new NavigationPage(new HomePage());

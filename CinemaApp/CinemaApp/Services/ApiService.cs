@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using UnixTimeStamp;
 using Xamarin.Essentials;
 
 namespace CinemaApp.Services
@@ -56,11 +57,15 @@ namespace CinemaApp.Services
             Preferences.Set("accessToken", result.access_token);
             Preferences.Set("userId", result.user_id);
             Preferences.Set("userName", result.user_Name);
+            Preferences.Set("tokenExpirationTime", result.expiration_Time);
+            Preferences.Set("currentTime", UnixTime.GetCurrentTime());
             return true;
         }
 
         public static async Task<List<Movie>> GetAllMovies(int pageNumber, int pageSize)
         {
+            //sprawdzenie czy token jest dalej aktualny, jezeli nie to wywolywana jest funkcja wystawiajaca nowy token
+            await TokenValidator.CheckTokenValidity();
             var httpClient = new HttpClient();
             //pobieranie accessTokenu zapisanego wczesniej w Preferences
             //Wysyłanie headera zawierającego token w celu pobrania listy filmów
@@ -72,6 +77,8 @@ namespace CinemaApp.Services
 
         public static async Task<MovieDetail> GetMovieDetail(int movieId)
         {
+            //sprawdzenie czy token jest dalej aktualny, jezeli nie to wywolywana jest funkcja wystawiajaca nowy token
+            await TokenValidator.CheckTokenValidity();
             var httpClient = new HttpClient();
             //pobieranie accessTokenu zapisanego wczesniej w Preferences
             //Wysyłanie headera zawierającego token w celu pobrania szczegółów dotyczących filmu
@@ -83,6 +90,8 @@ namespace CinemaApp.Services
 
         public static async Task<List<FindMovie>> FindMovies(string movieName)
         {
+            //sprawdzenie czy token jest dalej aktualny, jezeli nie to wywolywana jest funkcja wystawiajaca nowy token
+            await TokenValidator.CheckTokenValidity();
             var httpClient = new HttpClient();
             //pobieranie accessTokenu zapisanego wczesniej w Preferences
             //Wysyłanie headera zawierającego token w celu pobrania listy filmów zaczynających się wskazanym ciągiem znaków
@@ -94,7 +103,9 @@ namespace CinemaApp.Services
 
         public static async Task<bool> ReserveMovieTicket(Reservation reservation)
         {
-           
+
+            //sprawdzenie czy token jest dalej aktualny, jezeli nie to wywolywana jest funkcja wystawiajaca nowy token
+            await TokenValidator.CheckTokenValidity();
             //Serializacja obiektow na JSON w celu przesyłania do serwera
             var HttpClient = new HttpClient();
             var SerializedJson = JsonConvert.SerializeObject(reservation);
@@ -107,5 +118,24 @@ namespace CinemaApp.Services
             return true;
         }
 
+    }
+
+    public static class TokenValidator
+    {
+        public static async Task CheckTokenValidity()
+        {
+           var expirationTime = Preferences.Get("tokenExpirationTime", 0);
+            Preferences.Set("currentTime", UnixTime.GetCurrentTime());
+            var currentTime = Preferences.Get("currentTime", 0);
+            if (expirationTime < currentTime)
+            {
+               var email = Preferences.Get("email", string.Empty);
+               var password = Preferences.Get("password", string.Empty);
+
+               await ApiService.Login(email, password);
+
+            }
+
+        }
     }
 }

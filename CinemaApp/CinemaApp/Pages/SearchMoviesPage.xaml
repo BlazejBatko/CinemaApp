@@ -6,14 +6,14 @@
              xmlns:renderers="clr-namespace:CinemaApp.Renderers"
              mc:Ignorable="d"
              x:Class="CinemaApp.Pages.SearchMoviesPage"
-             BackgroundColor="#263A4F">
+             BackgroundColor="#1A1717">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Frame Padding="5"
                        HasShadow="False"
                        HorizontalOptions="FillAndExpand"
-                       BackgroundColor="#263A4F"
+                       BackgroundColor="#1D1A1A"
                        BorderColor="Transparent">
                     <StackLayout Orientation="Horizontal">
                         <Image Source="backarrowicon.png"
@@ -28,7 +28,7 @@
                                Padding="0"
                                HasShadow="False"
                                HorizontalOptions="FillAndExpand">
-                            <renderers:BorderlessEntry Placeholder="Search Movie"
+                            <renderers:BorderlessEntry Placeholder="Wprowadź nazwę filmu"
                                                        x:Name="EntSearchMovie"
                                                        TextChanged="EntSearchMovie_TextChanged"/>
                         </Frame>

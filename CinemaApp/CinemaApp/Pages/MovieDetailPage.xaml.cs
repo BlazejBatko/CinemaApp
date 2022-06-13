@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -32,7 +32,7 @@ namespace CinemaApp.Pages
             LblDuration.Text = movie.Duration;
             LblPlayingDate.Text = movie.PlayingDate;
             LblPlayingTime.Text = movie.PlayingTime;
-            LblTicketPrice.Text = "$" + movie.TicketPrice;
+            LblTicketPrice.Text = movie.TicketPrice.ToString();
             LblMovieDescription.Text = movie.Description;
             ImgMovie.Source = movie.FullImageUrl;
             ImgMovieCover.Source = movie.FullImageUrl;
@@ -44,9 +44,11 @@ namespace CinemaApp.Pages
             Navigation.PopModalAsync();
         }
 
-        private void TapVideo_Tapped(object sender, EventArgs e)
+        private async void TapVideo_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new VideoPlayerPage(movie.TrailorUrl));
+            // Navigation.PushModalAsync(new VideoPlayerPage(movie.TrailorUrl));
+            var uri = new Uri(movie.TrailorUrl);
+            await Browser.OpenAsync(uri);
         }
 
         private void ImgBookTicket_Tapped(object sender, EventArgs e)

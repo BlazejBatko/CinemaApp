@@ -22,6 +22,7 @@ namespace CinemaApp.Pages
         {
             InitializeComponent();
             LblUserName.Text = Preferences.Get("userName", string.Empty); // Wyświetlanie nazwy użytkownika w menu
+           // LblUserId.Text = Preferences.Get("userId", String.Empty);
             MoviesCollection = new ObservableCollection<Movie>();
             GetMovies();
         }
@@ -66,6 +67,18 @@ namespace CinemaApp.Pages
             if (currentSelection == null) return;
             Navigation.PushModalAsync(new MovieDetailPage(currentSelection.Id));
             ((CollectionView)sender).SelectedItem = null;
+        }
+
+        private void TapContact_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new ContactPage());
+        }
+
+        private void TapLogout_Tapped(object sender, EventArgs e)
+        {
+            Preferences.Set("accessToken", string.Empty);
+            Preferences.Set("tokenExpirationTime", 0);
+            Application.Current.MainPage = new NavigationPage(new SignupPage());
         }
     }
 }
