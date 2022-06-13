@@ -20,5 +20,7 @@ namespace CinemaApp.Models
         public string ImageUrl { get; set; }
         public object Image { get; set; }
         public object Reservations { get; set; }
+
+        public string FullImageUrl => AppSettings.ApiUrl + ImageUrl;
     }
 }
