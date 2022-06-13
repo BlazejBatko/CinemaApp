@@ -48,7 +48,9 @@
                 <CollectionView x:Name="CvMovies"                              
                                 SelectionMode="Single"
                                 RemainingItemsThreshold="1"
-                                RemainingItemsThresholdReached="CvMovies_RemainingItemsThresholdReached">
+                                RemainingItemsThresholdReached="CvMovies_RemainingItemsThresholdReached"
+                                SelectionChanged="CvMovies_SelectionChanged"
+                                >
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Span="1"
                                          Orientation="Vertical" />

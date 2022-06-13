@@ -11,6 +11,7 @@ namespace CinemaApp
         public App()
         {
             InitializeComponent();
+            Device.SetFlags(new string[] { "MediaElement_Experimental" });
 
             // Logowanie tylko jeden raz dzięki accessTokenowi przekazanemu w ApiService 
             var accessToken = Preferences.Get("accessToken", string.Empty);
