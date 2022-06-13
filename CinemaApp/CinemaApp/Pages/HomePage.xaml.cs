@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,6 +21,7 @@ namespace CinemaApp.Pages
         public HomePage()
         {
             InitializeComponent();
+            LblUserName.Text = Preferences.Get("userName", string.Empty); // Wyświetlanie nazwy użytkownika w menu
             MoviesCollection = new ObservableCollection<Movie>();
             GetMovies();
         }
@@ -28,7 +29,7 @@ namespace CinemaApp.Pages
         //Metoda GetMovies przekazujemy w niej numer strony oraz rozmiar
         private async void GetMovies()
         {
-           pageNumber++;
+           pageNumber++; // paginacja
            var movies = await ApiService.GetAllMovies(pageNumber, 5);
            foreach (var movie in movies)
             {
