@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="CinemaApp.Pages.MovieDetailPage"
-             BackgroundColor="#263A4F">
+             BackgroundColor="#1A1717">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand">
@@ -44,7 +44,6 @@
                 </Grid>
                 <Frame VerticalOptions="FillAndExpand"
                        IsClippedToBounds="False"
-                       BackgroundColor="#263A4F"
                        Margin="0,-40,0,0"
                        CornerRadius="25"
                        HasShadow="False">
@@ -72,8 +71,8 @@
                                        FontSize="Medium" />
                                 <StackLayout Orientation="Horizontal"
                                              Spacing="0">
-                                    <Frame BackgroundColor="#8B93A6"
-                                           BorderColor="#707070"
+                                    <Frame BackgroundColor="#9369A2"
+                                           BorderColor="#9369A2"
                                            Padding="8"
                                            CornerRadius="30">
                                         <Label TextColor="White"
@@ -95,7 +94,7 @@
                                        TextColor="White" />
                             </StackLayout>
                         </Grid>
-                        <Label Text="Details:"
+                        <Label Text="Szczegóły:"
                                FontSize="Medium"
                                Margin="0,20,0,0"
                                TextColor="White" />
@@ -110,7 +109,7 @@
                                 <ColumnDefinition Width="0.65*" />
                                 <ColumnDefinition Width="0.35*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Playing Date"
+                            <Label Text="Kiedy gramy"
                                    TextColor="White"
                                    Grid.Row="0"
                                    Grid.Column="0" />
@@ -118,7 +117,7 @@
                                    TextColor="#8B93A6"
                                    Grid.Row="1"
                                    Grid.Column="0" />
-                            <Label Text="Playing Time"
+                            <Label Text="O której"
                                    TextColor="White"
                                    Grid.Row="0"
                                    Grid.Column="1" />
@@ -126,7 +125,7 @@
                                    TextColor="#8B93A6"
                                    Grid.Row="1"
                                    Grid.Column="1" />
-                            <Label Text="Ticket Price"
+                            <Label Text="Cena pojedyńczego biletu"
                                    TextColor="White"
                                    Grid.Row="2"
                                    Grid.Column="0" />
@@ -135,9 +134,9 @@
                                    Grid.Row="3"
                                    Grid.Column="0" />
                         </Grid>
-                        <BoxView BackgroundColor="#8B93A6"
+                        <BoxView BackgroundColor="#9369A2"
                                  HeightRequest="1" />
-                        <Label Text="Description"
+                        <Label Text="Opis"
                                TextColor="White" />
                         <Label x:Name="LblMovieDescription"
                                TextColor="#8B93A6" />

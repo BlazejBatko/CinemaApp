@@ -6,7 +6,7 @@
              xmlns:renderers="clr-namespace:CinemaApp.Renderers"
              mc:Ignorable="d"
              x:Class="CinemaApp.Pages.ReservationPage"
-             BackgroundColor="#263A4F">
+             BackgroundColor="#1A1717">
     <ContentPage.Content>
         <StackLayout Margin="15,20,15,0">
             <Grid>
@@ -25,7 +25,7 @@
                         <TapGestureRecognizer x:Name="ImgBack" Tapped="ImgBack_Tapped" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Reservation"
+                <Label Text="Rezerwacja biletu"
                        TextColor="White"
                        VerticalOptions="Start"
                        HorizontalOptions="Center"
@@ -43,7 +43,7 @@
                     <ColumnDefinition Width="5.5*" />
                 </Grid.ColumnDefinitions>
                 <Frame Padding="20"
-                       BackgroundColor="#131C25"
+                       BackgroundColor="#1D1A1A"
                        CornerRadius="5"
                        Grid.Row="1"
                        Grid.Column="0"
@@ -78,8 +78,8 @@
                                  Spacing="0"
                                  Grid.Row="0"
                                  Grid.Column="0">
-                        <Frame BackgroundColor="#8B93A6"
-                               BorderColor="#707070"
+                        <Frame BackgroundColor="#9369A2"
+                               BorderColor="#9369A2"
                                Padding="8"
                                CornerRadius="30">
                             <Label TextColor="White"
@@ -107,13 +107,13 @@
                    Padding="0"
                    IsClippedToBounds="True">
                 <StackLayout Spacing="0">
-                    <StackLayout BackgroundColor="#131C25">
-                        <Label Text="Phone Number:"
+                    <StackLayout BackgroundColor="#9369A2">
+                        <Label Text="Numer telefonu:"
                                TextColor="White"
                                Padding="8" />
                     </StackLayout>
                     <StackLayout BackgroundColor="White">
-                        <renderers:BorderlessEntry Placeholder="Provide Your Phone Number"
+                        <renderers:BorderlessEntry Placeholder="Wpisz swój numer telefonu"
                                                    Keyboard="Telephone"
                                                    TextColor="Black"
                                                    x:Name="EntPhone" />
@@ -126,14 +126,14 @@
                    Padding="0"
                    IsClippedToBounds="True">
                 <StackLayout Spacing="0">
-                    <StackLayout BackgroundColor="#131C25">
-                        <Label Text="QTY"
+                    <StackLayout BackgroundColor="#9369A2">
+                        <Label Text="Ilość biletów"
                                TextColor="White"
                                Padding="8" />
                     </StackLayout>
                     <StackLayout BackgroundColor="White">
                         <renderers:BorderlessPicker  Margin="10"
-                                                     Title="Choose Ticket QTY"
+                                                     Title="Ilość biletów"
                                                      TextColor="Black"
                                                      x:Name="PickerQty"
                                                      SelectedIndexChanged="PickerQty_SelectedIndexChanged">
@@ -169,8 +169,8 @@
                    Padding="0"
                    IsClippedToBounds="True">
                 <StackLayout Spacing="0">
-                    <StackLayout BackgroundColor="#131C25">
-                        <Label Text="TOTAL"
+                    <StackLayout BackgroundColor="#9369A2">
+                        <Label Text="Cena końcowa"
                                TextColor="White"
                                Padding="8" />
                     </StackLayout>
@@ -191,12 +191,10 @@
                                     <Span TextColor="Black"
                                           CharacterSpacing="2"
                                           Text="=" />
-                                    <Span TextColor="#F38914"
-                                          CharacterSpacing="2"
-                                          Text="$" />
                                     <Span x:Name="SpanTotalPrice"
-                                          TextColor="#F38914"
-                                          CharacterSpacing="2" />
+                                          TextColor="#9369A2"
+                                          CharacterSpacing="2" 
+                                          />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>

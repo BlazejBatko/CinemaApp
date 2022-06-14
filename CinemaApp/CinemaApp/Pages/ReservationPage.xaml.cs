@@ -44,11 +44,11 @@ namespace CinemaApp.Pages
             var reservation = new Reservation()
             {
                 //INT cannot be cast to STRING
-                UserId = Convert.ToInt32(Preferences.Get("userId", string.Empty)),
+                UserId = Convert.ToInt16(Preferences.Get("userId", 1)),
                 MovieId = movieId,
-                Phone = "2939239",
-                Qty = Convert.ToInt32(SpanQty.Text),
-                Price = Convert.ToInt32(SpanTotalPrice.Text)
+                Phone = EntPhone.Text,
+                Qty = Convert.ToInt16(SpanQty.Text),
+                Price = Convert.ToInt16(SpanTotalPrice.Text)
             };
             var response = await ApiService.ReserveMovieTicket(reservation);
             if (response)
