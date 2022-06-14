@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -41,6 +42,9 @@ namespace CinemaApp.Pages
 
         private async void ImgReserve_Tapped(object sender, EventArgs e)
         {
+            var phone = EntPhone.Text;
+            var phoneRegex = @"^[0-9]{9}$";
+
             var reservation = new Reservation()
             {
                 //INT cannot be cast to STRING
@@ -51,9 +55,13 @@ namespace CinemaApp.Pages
                 Price = Convert.ToInt16(SpanTotalPrice.Text)
             };
             var response = await ApiService.ReserveMovieTicket(reservation);
-            if (response)
+            if (response && Regex.IsMatch(phone, phoneRegex))
             {
                 await DisplayAlert(":)", "Pomyślnie zarezerwowano miejsca na wskazany seans", "Kontynuuj");
+            }
+            else if (!Regex.IsMatch(phone, phoneRegex))
+            {
+                await DisplayAlert("💥", "Wprowadź poprawny numer telefonu", "Anuluj");
             }
             else
             {
